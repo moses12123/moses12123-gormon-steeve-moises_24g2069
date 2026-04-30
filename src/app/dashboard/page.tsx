@@ -120,7 +120,7 @@ export default function DashboardPage() {
           {navItems.map((item) => (
             <button
               key={item.label}
-              onClick={() => { setSidebarOpen(false); }}
+              onClick={() => { router.push(item.href); setSidebarOpen(false); }}
               className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                 item.active
                   ? 'bg-[#e8f0fe] text-[#1a73e8]'
