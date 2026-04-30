@@ -7,6 +7,11 @@ import GoogleAnalytics from '@/components/GoogleAnalytics';
 export const metadata: Metadata = {
   title: 'UnivData Analytics',
   description: 'Tableau de bord analytique universitaire professionnel',
+import './globals.css';
+
+export const metadata: Metadata = {
+  title: 'UnivData',
+  description: 'Plateforme de données universitaires',
 };
 
 export default function RootLayout({
@@ -30,6 +35,8 @@ export default function RootLayout({
           </Suspense>
           {children}
         </AuthProvider>
+      <body className="min-h-screen bg-background text-foreground antialiased">
+        {children}
       </body>
     </html>
   );
