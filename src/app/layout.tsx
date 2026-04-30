@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import '../styles/tailwind.css';
+import { AuthProvider } from '@/contexts/AuthContext';
 
 export const metadata: Metadata = {
-  title: 'UnivData',
-  description: 'UnivData Application',
+  title: 'UnivData Analytics',
+  description: 'Tableau de bord analytique universitaire professionnel',
 };
 
 export default function RootLayout({
@@ -12,10 +13,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}
-        <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fmoses121237948back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.18" />
-        <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2" /></body>
+    <html lang="fr">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      
+      <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fmoses121237948back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.18" />
+      <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2" /></head>
+      <body>
+        <AuthProvider>
+          {children}
+        </AuthProvider>
+      </body>
     </html>
   );
 }
