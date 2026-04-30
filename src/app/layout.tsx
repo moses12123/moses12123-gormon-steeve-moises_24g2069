@@ -1,37 +1,58 @@
-import type { Metadata } from 'next';
-import './globals.css';
-import '../styles/tailwind.css';
-import { AuthProvider } from '@/contexts/AuthContext';
-import { Suspense } from 'react';
-import GoogleAnalytics from '@/components/GoogleAnalytics';
-
-export const metadata: Metadata = {
-  title: 'unidef_data | Collect Intelligence',
-  description: 'Tableau de bord analytique universitaire professionnel',
-};
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function HomePage() {
   return (
-    <html lang="fr">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fmoses121237948back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.18" />
-        <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2" />
-      </head>
-      <body className="min-h-screen bg-background text-foreground antialiased">
-        <AuthProvider>
-          <Suspense fallback={null}>
-            <GoogleAnalytics />
-          </Suspense>
-          {children}
-        </AuthProvider>
-      </body>
-    </html>
+    <main className="min-h-screen flex items-center justify-center px-6 py-16">
+      <div className="max-w-3xl w-full">
+        <div className="rounded-2xl border border-border bg-card shadow-card p-8 sm:p-12">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground font-bold">
+              U
+            </span>
+            <span className="text-sm font-mono text-muted-foreground tracking-wide">
+              UNIVDATA
+            </span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
+            Bienvenue sur UnivData
+          </h1>
+          <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            Plateforme de données universitaires. L&apos;application est en cours
+            de configuration.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="rounded-xl border border-border p-5">
+              <div className="flex items-center gap-2 mb-2">
+                <span
+                  className="inline-block h-2 w-2 rounded-full"
+                  style={{ backgroundColor: 'hsl(var(--sciences))' }}
+                />
+                <h2 className="font-semibold">Sciences</h2>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Filières scientifiques et techniques.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border p-5">
+              <div className="flex items-center gap-2 mb-2">
+                <span
+                  className="inline-block h-2 w-2 rounded-full"
+                  style={{ backgroundColor: 'hsl(var(--lettres))' }}
+                />
+                <h2 className="font-semibold">Lettres</h2>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Filières littéraires et sciences humaines.
+              </p>
+            </div>
+          </div>
+          <div className="mt-8 pt-6 border-t border-border text-sm text-muted-foreground">
+            Modifiez{' '}
+            <code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs">
+              src/app/page.tsx
+            </code>{' '}
+            pour personnaliser cette page.
+          </div>
+        </div>
+      </div>
+    </main>
   );
 }
